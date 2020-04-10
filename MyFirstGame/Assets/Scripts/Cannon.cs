@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
+    public GameObject cannonBallPrefab;
+    public Transform shootingPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,16 @@ public class Cannon : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical");
         // transform.Translate(2 * Time.deltaTime, 0, 0);
+        //transform.Translate(2 * Time.deltaTime, 0, 0);
         transform.Rotate(verticalInput * 45 * Time.deltaTime, 0, 0);
+
+        if(Input.GetKeyDown("space")){
+        
+            GameObject cannonBall = Instantiate(cannonBallPrefab);
+            cannonBall.transform.position = shootingPoint.position;
+
+            Rigidbody cannonBallRb = cannonBall.GetComponent<Rigidbody>();
+            cannonBallRb.velocity = transform.up * 8;
+        }
     }
 }
