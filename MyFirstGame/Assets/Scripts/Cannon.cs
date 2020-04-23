@@ -15,10 +15,11 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
+        float verticalInput = Input.GetAxis("Horizontal");
         // transform.Translate(2 * Time.deltaTime, 0, 0);
         //transform.Translate(2 * Time.deltaTime, 0, 0);
         transform.Rotate(verticalInput * 45 * Time.deltaTime, 0, 0);
+        // transform.Translate(verticalInput * 45 * Time.deltaTime, 0, 0);
 
         if(Input.GetKeyDown("space")){
         
